@@ -1,7 +1,7 @@
 // HomePage.js
 import React from 'react';
-import Card from '../components/card'; // Import the Card component
-import Navbar from '../components/navbar';
+import Card from '../../components/card'; // Import the Card component
+import Navbar from '../../components/navbar';
 
 const HomePage = () => {
     // Sample data for the cards
@@ -40,7 +40,7 @@ const HomePage = () => {
             title: 'Cookbook',
             description: '"Cookbook" provides a collection of recipes, cooking techniques, and culinary tips. These books offer guidance on preparing a wide range of dishes, from everyday meals to gourmet creations, often accompanied by photographs, ingredient lists, and step-by-step instructions.',
             imageUrl: 'https://via.placeholder.com/300'
-        },
+        }
 
 
     ];

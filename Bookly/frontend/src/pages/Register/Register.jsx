@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import Navbar from '../components/navbar';
+import Navbar from '../../components/navbar';
+import { register } from '../../services/admin';
+import './Register.css';
 
 export function Register(){
     const [firstName, setFirstName] = useState('')
@@ -14,7 +16,7 @@ export function Register(){
     //to get navigation hook
     const navigate = useNavigate()
 
-    const onRegister = () => {
+    const onRegister = async () => {
         if(firstName.length==0){
             toast.error("Please Enter First Name");
         }else if(lastName==0){
@@ -29,87 +31,77 @@ export function Register(){
             toast.error('Password does not match');
         }else{
             //call register api,check status
+            const result = await register(firstName,lastName,email,password)
             //if success go to login screen
+            if(result['status']=='success'){
             toast.success('Successfully Registered');
-            navigate('/signin')
+            navigate('/')
+            }else{
+                toast.error(result['error'])
+            }
         }
     }
 
     return (
         <div className='container'>
          <Navbar/>
-         <h1 className='title'>Register</h1>
-         <div className="row">
-             <div className="col-3"></div>
-             
-             <div className="col">
-             
+         <div className='container_body'>
+         <center>
+         <div className='registration-body'>
+          
              <div className='form'>
-                 <div className='mb-3'>
-                 <label htmlFor=''>First Name</label>
+             <h1 className='title'>Register here</h1>
+                 <div className='input-box mb-3'>
                  <input 
                  onChange={(e)=> setFirstName(e.target.value)}
                  type='text'
-                 placeholder='Tony'
-                 className='form-control' 
+                 placeholder='First Name'
                  />
              </div>
-             <div className='mb-3'>
-                 <label htmlFor=''>Last Name</label>
+
+             <div className='input-box mb-3'>
                  <input 
                  onChange={(e)=> setLastName(e.target.value)}
                  type='text'
-                 placeholder='Stark'
-                 className='form-control' 
+                 placeholder='Last Name'
                  />
              </div>
-             <div className='mb-3'>
-                <label htmlFor=''>Email:</label>
+
+             <div className='input-box mb-3'>
                 <input 
                 onChange={(e)=> setEmail(e.target.value)}
                 type='email'
-                placeholder='abc@gmail.com'
-                className='form-control' 
+                placeholder='email@email.com'
                 />
             </div>
-            <div className='mb-3'>
-                <label htmlFor=''>Password:</label>
+            <div className='input-box mb-3'>
                 <input 
                 onChange={(e)=> setPassword(e.target.value)}
                 type='password'
-                placeholder='xxxxxxxxxx'
-                className='form-control' 
+                placeholder='Password'
                 />
             </div>
-            <div className='mb-3'>
-                <label htmlFor=''>Re-enter Password:</label>
+            <div className='input-box mb-3'>
                 <input 
                 onChange={(e)=> setConfirmPassword(e.target.value)}
                 type='password'
-                placeholder='xxxxxxxxxx'
-                className='form-control' 
+                placeholder='Re-enter Password'
                 />
             </div>
-            <div class="form-check">
+            <div class="mb-3">
                 <input 
-                class="form-check-input" 
+                className="form-check-input" 
                 type="checkbox" id="autoSizingCheck"/>
                 <label class="form-check-label" for="autoSizingCheck">
                     Remember me
             </label>
-    </div>
-            <div className="mb-3">
-                <button onClick={onRegister} className="w-100 btn btn-primary mt-2 ">Register</button>
-                <center><div>Already have an account? <Link to={'/'}>Login here</Link></div></center>
             </div>
-             </div>
-            
-             </div> 
-             <div className="col-3"></div>
-         
-         
- <div></div>
+            <button onClick={onRegister} className="w-100 btn btn-primary mt-2 ">Register</button>
+            <center><div>Already have an account? <Link to={'/'}>Login here</Link></div></center>       
          </div>  
+         </div>
+         </center>
+         </div>
          </div>
          
      )

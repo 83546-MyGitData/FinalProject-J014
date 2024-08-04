@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import './Logo.jpeg'
 
 function Navbar() {
   return (
@@ -8,7 +9,7 @@ function Navbar() {
     >
       <div className='container-fluid'>
       <a className="navbar-brand" href="#" >
-        <img src=".\images\Logo.svg"
+        <img src="Logo.jpeg"
         alt='' width="30" height="24" />
             Bookly.io
         </a>

@@ -1,8 +1,8 @@
 import {Route, Routes} from "react-router-dom"
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+import { Login } from "./pages/Login/Login";
+import { Register } from "./pages/Register/Register";
 import Orders from "./pages/Orders";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home"
 import Cart from "./pages/Cart";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
