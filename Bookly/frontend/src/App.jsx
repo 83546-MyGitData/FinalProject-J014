@@ -7,6 +7,8 @@ import Cart from "./pages/Cart";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from "./pages/Profile";
+//import Categories from './pages/Categories/AllBooks';
+import AllBooks from "./pages/Categories/AllBooks";
 
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
+
+        <Route path = '/' element={<Home/>} />
+        <Route path = '/allBooks' element={<AllBooks/>} />
       </Routes>
       <ToastContainer />
     </div>

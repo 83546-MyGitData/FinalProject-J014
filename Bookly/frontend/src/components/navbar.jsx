@@ -45,6 +45,17 @@ function Navbar() {
                 Home
               </Link>
             </li>
+
+            <li className='nav-item'>
+              <Link
+                to='/allBooks'
+                className='nav-link'
+                aria-current='page'
+                href='#'
+              >
+                All Books
+              </Link>
+            </li>
             
             <li className='nav-item'>
               <Link
@@ -68,7 +79,9 @@ function Navbar() {
               </Link>
             </li>
 
-            <li className='nav-item'>
+            
+
+            <li className='nav-item ml-auto'>
             <form className="form-inline">
                 <div className="input-group">
                 <div className="input-group-prepend">
@@ -79,6 +92,8 @@ function Navbar() {
             </form>
 
             </li>
+
+           
           </ul>
         </div>
       </div>
