@@ -51,6 +51,15 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 		return categoryDtoList;
 	}
+
+	@Override
+	public CategoryDTO updateCategoryById(Long categoryId , CategoryDTO dto) {
+		Category category = categoryDao.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Invalid Category Id"));
+		category.setCategoryName(dto.getCategoryName());
+		category.setDescription(dto.getDescription());
+		categoryDao.save(category);
+		return mapper.map(category, CategoryDTO.class);
+	}
 	
 	
 }
