@@ -25,6 +25,9 @@ function App() {
 
         <Route path = '/' element={<Home/>} />
         <Route path = '/allBooks' element={<AllBooks/>} />
+
+        <Route path = '/scienceFiction' element={<AllBooks/>} />
+        
       </Routes>
       <ToastContainer />
     </div>
