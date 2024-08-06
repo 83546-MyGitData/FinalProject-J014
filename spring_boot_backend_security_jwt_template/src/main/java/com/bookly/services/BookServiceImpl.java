@@ -30,6 +30,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public ApiResponse deleteBookById(Long BookId) {
 		Book book = bookDao.findById(BookId).orElseThrow(()-> new ResourceNotFoundException("Invalid Book Id"));
+		bookDao.delete(book);
 		return new ApiResponse("Book Deleted With ID - "+ book.getBookId());
 	}
 
