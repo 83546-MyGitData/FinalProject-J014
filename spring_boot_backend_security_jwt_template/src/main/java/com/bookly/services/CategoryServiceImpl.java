@@ -3,8 +3,11 @@ package com.bookly.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bookly.custom_exceptions.ResourceNotFoundException;
 import com.bookly.dao.CategoryDao;
@@ -12,6 +15,8 @@ import com.bookly.dto.ApiResponse;
 import com.bookly.dto.CategoryDTO;
 import com.bookly.entities.Category;
 
+@Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired

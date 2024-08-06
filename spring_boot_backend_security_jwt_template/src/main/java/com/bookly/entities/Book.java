@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +31,8 @@ public class Book {
 	private String author;
 	private String description;
 	private double price;
+	@ManyToOne
+	@JoinColumn(name = "category_id")
 	private Category category;
 	@Column(length = 30)
 	private String publication;

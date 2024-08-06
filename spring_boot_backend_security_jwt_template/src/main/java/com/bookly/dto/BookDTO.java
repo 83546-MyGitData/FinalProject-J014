@@ -28,7 +28,6 @@ public class BookDTO {
 	private String description;
 	@NotBlank
 	private double price;
-	private Category category;
 	@NotBlank
 	private String publication;
 }

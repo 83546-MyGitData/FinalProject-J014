@@ -15,4 +15,6 @@ public interface BookService {
 	BookDTO getBookById(Long bookId);
 	
 	BookDTO updateBook(BookDTO dto);
+
+	List<BookDTO> getAllBooks();
 }

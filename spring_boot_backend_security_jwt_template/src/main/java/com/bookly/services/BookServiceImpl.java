@@ -2,10 +2,13 @@ package com.bookly.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+
+import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bookly.custom_exceptions.ResourceNotFoundException;
 import com.bookly.dao.BookDao;
@@ -16,6 +19,8 @@ import com.bookly.entities.Book;
 import com.bookly.entities.Category;
 
 
+@Service
+@Transactional
 public class BookServiceImpl implements BookService {
 
 	@Autowired
@@ -59,6 +64,17 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<BookDTO> getAllBooksByCategory(Long CategoryId) {
 		List<Book> bookList = bookDao.findByCategory(CategoryId);
+		List<BookDTO> bookDtoList = new ArrayList<>();
+		for (Book book : bookList) {
+			BookDTO dto = mapper.map(book, BookDTO.class);
+			bookDtoList.add(dto);
+		}
+		return bookDtoList;
+	}
+	
+	@Override
+	public List<BookDTO> getAllBooks() {
+		List<Book> bookList = bookDao.findAll();
 		List<BookDTO> bookDtoList = new ArrayList<>();
 		for (Book book : bookList) {
 			BookDTO dto = mapper.map(book, BookDTO.class);
