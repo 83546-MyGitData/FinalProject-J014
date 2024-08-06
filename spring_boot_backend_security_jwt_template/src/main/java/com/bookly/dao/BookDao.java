@@ -9,4 +9,6 @@ import com.bookly.entities.Book;
 public interface BookDao extends JpaRepository<Book ,Long>{
 	
 	List<Book> findByCategory(Long categoryId);
+	
+	
 }

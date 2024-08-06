@@ -1,5 +1,6 @@
 package com.bookly.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import com.bookly.dao.CategoryDao;
 import com.bookly.dto.ApiResponse;
 import com.bookly.dto.BookDTO;
 import com.bookly.entities.Book;
+import com.bookly.entities.Category;
 
 
 public class BookServiceImpl implements BookService {
@@ -27,32 +29,42 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public ApiResponse deleteBookById(Long BookId) {
-		Book book = bookDao.findById(BookId).orElseThrow(()-> new ResourceNotFoundException("Invalid Book id"));
+		Book book = bookDao.findById(BookId).orElseThrow(()-> new ResourceNotFoundException("Invalid Book Id"));
+		bookDao.delete(book);
 		return new ApiResponse("Book Deleted With ID - "+ book.getBookId());
 	}
 
 	@Override
 	public BookDTO addNewBook(Long CategoryId,BookDTO dto) {
-		
-		return null;
+		Category category = categoryDao.findById(CategoryId).orElseThrow(()-> new ResourceNotFoundException("Invalid Category Id"));
+		Book book = mapper.map(dto, Book.class);
+		book.setCategory(category);
+		Book persistentBook = bookDao.save(book);
+		return mapper.map(persistentBook, BookDTO.class);
 	}
 
 	@Override
 	public BookDTO getBookById(Long bookId) {
-		// TODO Auto-generated method stub
-		return null;
+		Book book = bookDao.findById(bookId).orElseThrow(()-> new ResourceNotFoundException("Invalid Book Id"));
+		return mapper.map(book, BookDTO.class);
 	}
 
 	@Override
-	public BookDTO updateBookById(Long id, BookDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+	public BookDTO updateBook(BookDTO dto) {
+		Book book = mapper.map(dto, Book.class);
+		Book updatedBook = bookDao.save(book);
+		return mapper.map(updatedBook, BookDTO.class);
 	}
 
 	@Override
 	public List<BookDTO> getAllBooksByCategory(Long CategoryId) {
-		List<Book> bookList = bookDao.findByCategory(CategoryId);cx 
-		return null;
+		List<Book> bookList = bookDao.findByCategory(CategoryId);
+		List<BookDTO> bookDtoList = new ArrayList<>();
+		for (Book book : bookList) {
+			BookDTO dto = mapper.map(book, BookDTO.class);
+			bookDtoList.add(dto);
+		}
+		return bookDtoList;
 	}
 	
 	
