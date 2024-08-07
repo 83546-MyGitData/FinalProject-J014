@@ -1,4 +1,4 @@
-package com.app.exc_handler;
+package com.bookly.exc_handler;
 
 import java.util.Arrays;
 import java.util.List;

@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,22 +20,18 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+public class BookReview {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "book_id")
-	private Long bookId;
-	@Column(length = 30)
-	private String title;
-	@Column(length = 30)
-	private String author;
-	private String description;
-	private double price;
+	@Column(name = "book_review_id")
+	private Long bookReviewId;
+	private int rating;
+	private String comment;
 	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
-	@Column(length = 30)
-	private String publication;
+	@JoinColumn(name = "book_id")
+	private Book book;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 	
 }
-
