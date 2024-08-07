@@ -9,10 +9,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from "./pages/Profile";
 //import Categories from './pages/Categories/AllBooks';
 import AllBooks from "./pages/Categories/AllBooks";
+//import BookDetails from './categories/BookDetails';
+import { Provider } from 'react-redux';
+import { store } from "./store";
+import BookDetails from "./pages/Categories/BookDetails";
 
 
 function App() {
   return (
+    <Provider store={store}>
     <div className="container">
       <Routes>
         <Route index element={<Login/>} /> 
@@ -26,11 +31,16 @@ function App() {
         <Route path = '/' element={<Home/>} />
         <Route path = '/allBooks' element={<AllBooks/>} />
 
+
+        <Route path="/" element={<Home />} />
+        <Route path="/bookDetails" element={<BookDetails />} />
+
         <Route path = '/scienceFiction' element={<AllBooks/>} />
         
       </Routes>
       <ToastContainer />
     </div>
+    </Provider>
   );
 }
 
