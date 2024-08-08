@@ -37,6 +37,9 @@ public class Book {
 	private Category category;
 	@Column(length = 30)
 	private String publication;
+	@ManyToOne
+	@JoinColumn(name="discount_id")
+	private Discount discount;
 	
 }
 
