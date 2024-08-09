@@ -1,5 +1,7 @@
 package com.bookly.controller;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bookly.dto.BookDTO;
 import com.bookly.services.BookService;
@@ -29,8 +33,8 @@ public class BookController {
 	
 	
 	@PostMapping(value = "/{categoryId}")
-	public ResponseEntity<?> addNewBook(@RequestBody @Valid BookDTO dto, @PathVariable Long categoryId){
-		return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addNewBook(categoryId, dto));
+	public ResponseEntity<?> addNewBook(@RequestPart MultipartFile image, @RequestBody @Valid BookDTO dto, @PathVariable Long categoryId) throws IOException{
+		return ResponseEntity.status(HttpStatus.CREATED).body(bookService.addNewBookWithImage(dto, image, categoryId));
 	}
 	
 	@GetMapping(value = "/{categoryId}")
