@@ -35,7 +35,7 @@ function Navbar() {
           </ul>
             </li>
 
-            <li className='nav-item'>
+            <li className='nav-item mx-lg-4'>
               <Link
                 to='/home'
                 className='nav-link'
@@ -46,7 +46,7 @@ function Navbar() {
               </Link>
             </li>
 
-            <li className='nav-item'>
+            <li className='nav-item mx-lg-4'>
               <Link
                 to='/allBooks'
                 className='nav-link'
@@ -57,7 +57,7 @@ function Navbar() {
               </Link>
             </li>
             
-            <li className='nav-item'>
+            <li className='nav-item mx-lg-4'>
               <Link
                 to='/aboutus'
                 className='nav-link'
@@ -68,7 +68,7 @@ function Navbar() {
               </Link>
             </li>
 
-            <li className='nav-item'>
+            <li className='nav-item mx-lg-4'>
               <Link
                 to='/contactus'
                 className='nav-link'
