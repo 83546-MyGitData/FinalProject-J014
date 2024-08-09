@@ -35,6 +35,8 @@ public class Book {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
+	@Column(name = "img" , length = 100)
+	private String imgPath;
 	@Column(length = 30)
 	private String publication;
 	@ManyToOne
