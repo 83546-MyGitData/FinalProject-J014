@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify'
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar/navbar';
 import { register } from '../../services/admin';
 import './Register.css';
 
@@ -43,7 +43,7 @@ export function Register(){
     }
 
     return (
-        <div className='container'>
+        <div className='container-fluid'>
          <Navbar/>
          <div className='container_body'>
          <center>
@@ -88,6 +88,26 @@ export function Register(){
                 placeholder='Re-enter Password'
                 />
             </div>
+
+            <div>
+            <div className="row">
+                <div className="col">
+                    <h6>Role: </h6>
+                </div>
+            
+                    <div className="col">
+                    <input type="radio" id="html" name="fav_language" value="HTML"/>
+                    <label for="html">Seller</label>
+                    </div>
+                    
+                    <div className="col">
+                    <input type="radio" id="css" name="fav_language" value="CSS"/>
+                    <label for="css">Buyer</label>
+                    </div>
+            </div>
+            </div>
+
+
             <div class="mb-3">
                 <input 
                 className="form-check-input" 
@@ -95,9 +115,11 @@ export function Register(){
                 <label class="form-check-label" for="autoSizingCheck">
                     Remember me
             </label>
-            </div>
+            
             <button onClick={onRegister} className="w-100 btn btn-primary mt-2 ">Register</button>
-            <center><div>Already have an account? <Link to={'/'}>Login here</Link></div></center>       
+            <center><div>Already have an account? <Link to={'/'}>Login here</Link></div></center>  
+            </div>
+
          </div>  
          </div>
          </center>

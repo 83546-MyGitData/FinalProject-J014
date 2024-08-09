@@ -1,6 +1,6 @@
 
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar/navbar';
 import React, { useEffect, useState } from 'react';
 import Books from '../../components/books';
 import { getBooksByCategory } from '../../services/books'; // Update the service to fetch books by category

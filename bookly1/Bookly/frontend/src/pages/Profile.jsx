@@ -1,5 +1,5 @@
 import CountryState from "../components/countrystate"
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar/navbar"
 import React from 'react'
 
 export default function Profile() {

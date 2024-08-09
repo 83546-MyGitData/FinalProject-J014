@@ -1,7 +1,7 @@
 // HomePage.js
 import React from 'react';
-import Card from '../../components/card'; // Import the Card component
-import Navbar from '../../components/navbar';
+import Card from '../../components/Card/card'; // Import the Card component
+import Navbar from '../../components/Navbar/navbar';
 
 const HomePage = () => {
     // Sample data for the cards

@@ -1,19 +1,23 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Navbar.css';  // Import the CSS file
 import Logo from './Logo.jpeg';
-import User from "../user/user";
+import { FaUserAlt } from "react-icons/fa";
+
+
 
 function Navbar({user , setUser}) {
+
+
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary bg-blue' data-bs-theme='blue'>
+    
+    <nav className='navbar navbar-expand-lg bg-body-tertiary' data-bs-theme='dark'>
       <div className='container-fluid'>
         <a className="navbar-brand" href="#">
-          <img src={Logo} alt='' width="30" height="24" />
-          Bookly.io
-        </a>
+          <img src={Logo} alt='' width="30" height="24" className='navbar_logo'/>
+          ᗷᗝᗝᛕᒪƳ.Ꭵᗝ      </a>
 
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
+          <ul className='nav navbar-nav d-lg-inline-flex  mx-lg-5'>
             {/* <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Shop By Category
@@ -48,7 +52,7 @@ function Navbar({user , setUser}) {
               <Link to='/contactus' className='nav-link' aria-current='page'>Contact Us</Link>
             </li>
 
-            <li className='nav-item '>
+            <li className='nav-item mx-lg-4'>
               <form className="form-inline">
                 <div className="input-group">
                   <div className="input-group-prepend">
@@ -59,19 +63,19 @@ function Navbar({user , setUser}) {
               </form>
             </li>
 
-            <div className="d-inline-flex">
-              {user ?
-                <User user={user} setUser={setUser} />
-                :
-                <Link className="nav-icon position-relative text-decoration-none mx-5" to={'./signin'}>
-                  <i className="fa fa-fw fa-user text-dark mr-3" />
-                </Link>
-              }
-            </div>
+            <li className='nav-item'>
+              <div style={{marginLeft:'28vw',marginTop:'4px'}}>
+              <FaUserAlt style={{color : 'White'}} />
+              </div>
+
+            </li>
+
+            
           </ul>
         </div>
-      </div>
+        </div>
     </nav>
+    
   );
 }
 

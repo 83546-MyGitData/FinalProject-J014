@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar/navbar';
 import { login } from '../../services/admin';
 import './login.css'
 import { FaUser, FaLock } from "react-icons/fa";
+
 
 
 export function Login(){
@@ -40,7 +41,7 @@ export function Login(){
     }
 
     return (
-       <div className='container-fluid'>
+       <div className='container-fluid'> 
         <Navbar/>
         
         <div className='container-body'>
@@ -65,17 +66,37 @@ export function Login(){
                 /><FaLock className='icon'/>
             </div>
 
+            <div>
+            <div className="row">
+                <div className="col">
+                    <h6>Select Role: </h6>
+                </div>
+            
+                    <div className="col">
+                    <input type="radio" id="html" name="fav_language" value="HTML"/>
+                    <label for="html">Seller</label>
+                    </div>
+                    
+                    <div className="col">
+                    <input type="radio" id="css" name="fav_language" value="CSS"/>
+                    <label for="css">Buyer</label>
+                    </div>
+            </div>
+            </div>
+
             <div className="mb-3">
             <input 
                 className="form-check-input" 
                 type="checkbox" id="autoSizingCheck"/>
                 <label class="form-check-label" for="autoSizingCheck">
-                    Remember me
-            </label><Link style={{margin:'10px'}} className='link-light' to={'/setpassword'}>Forget Password?</Link>
+                     Remember me
+            </label>
                 <button 
                 onClick={onLogin} 
                 className="w-100 btn btn-primary mt-2">Login</button>
-                <div>Don't have an account? <Link to={'/register'}>Register here</Link></div>
+                <div>Don't have an account? <Link to={'/register'}> Register here</Link></div>
+                <div><Link style={{margin:'10px'}} className='link-light' to={'/setpassword'}>Forget Password?</Link></div>
+
                 
             </div>
         </div>

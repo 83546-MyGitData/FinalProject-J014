@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getBookDetails } from '../../services/books';
 import { config } from '../../services/config';
-import Navbar from '../../components/navbar';
+import Navbar from '../../components/Navbar/navbar';
 
 function BookDetails() {
   const [details, setDetails] = useState(undefined);

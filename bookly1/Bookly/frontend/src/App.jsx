@@ -1,9 +1,7 @@
 import {Route, Routes} from "react-router-dom"
 import { Login } from "./pages/Login/Login";
 import { Register } from "./pages/Register/Register";
-import Orders from "./pages/Orders";
 import Home from "./pages/Home/Home"
-import Cart from "./pages/Cart";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from "./pages/Profile";
@@ -17,6 +15,10 @@ import SignIn from "./signin/signin";
 import Admin from "./admin/admin";
 import AddNewBook from "./addBooks/addnewbook";
 import React, { useState} from "react";
+import Footer from "./components/Footer/Footer";
+
+
+
 
 
 
@@ -27,14 +29,13 @@ function App() {
 
 
   return (
-    <Provider store={store}>
-    <div className="container">
+    
+    <div className="container-fluid">
+      <Provider store={store}>
       <Routes>
         <Route index element={<Login/>} /> 
         <Route path='/' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/orders' element={<Orders/>}/>
-        <Route path='/cart' element={<Cart/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
 
@@ -60,8 +61,10 @@ function App() {
         
       </Routes>
       <ToastContainer />
+      <Footer/>
+      </Provider>
     </div>
-    </Provider>
+    
   );
 }
 

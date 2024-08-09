@@ -5,6 +5,8 @@
     width: 100%;
     margin: 0; /* Remove any default margin */
     padding: 0; /* Remove any default padding */
+    height: 50px;
+    border: 2px solid rgb(24, 25, 23);
   }
   
   /* Ensure the dropdown menu items have some padding */
@@ -29,5 +31,9 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  .navbar_logo{
+    margin-right: 10px;
   }
   
