@@ -1,3 +1,4 @@
+
 import { useDispatch } from 'react-redux';
 import { config } from '../services/config';
 import { cutString } from '../utils';
@@ -154,4 +155,57 @@ function Books({ book, onClick }) {
 export default Books;
 
 
+*/
+
+/* 3rd
+import { useDispatch } from 'react-redux';
+import { config } from '../services/config';
+import { cutString } from '../utils';
+import { useNavigate } from 'react-router-dom';
+
+function Books({ books }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onImageClick = (book) => {
+    navigate('/book-details', { state: { id: book.id } });
+  };
+
+  if (!books || books.length === 0) {
+    return <p>No books available</p>;
+  }
+
+  return (
+    <div className='row'>
+      {books.map((book, index) => (
+        <div className='col-2' key={index}>
+          <div className='card mb-3'>
+            <img
+              onClick={() => onImageClick(book)}
+              style={{ height: 200, cursor: 'pointer', objectFit: 'cover', width: '100%' }}
+              src={`${config.serverUrl}/image/${book.profileImage || 'default.jpg'}`}
+              className='card-img-top'
+              alt={book.title || 'Book'}
+            />
+            <div className='card-body'>
+              <div className='card-text'>
+                <span style={{ fontWeight: 'bold', fontSize: 18 }}>
+                  ₹{book.rent || 'N/A'}
+                </span>
+              </div>
+              <h5 style={{ fontWeight: 'bold' }} className='card-title'>
+                {cutString(book.title || 'No Title')}
+              </h5>
+              <div className='card-text'>
+                <span>{book.author || 'Unknown Author'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default Books;
 */
