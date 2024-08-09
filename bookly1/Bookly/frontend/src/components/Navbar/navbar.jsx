@@ -16,7 +16,7 @@ function Navbar({user , setUser}) {
           <img src={Logo} alt='' width="30" height="24" className='navbar_logo'/>
           ᗷᗝᗝᛕᒪƳ.Ꭵᗝ      </a>
 
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <div className='collapse navbar-collapse' style={{marginTop:'5px'}} id='navbarSupportedContent'>
           <ul className='nav navbar-nav d-lg-inline-flex  mx-lg-5'>
             {/* <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,7 +64,7 @@ function Navbar({user , setUser}) {
             </li>
 
             <li className='nav-item'>
-              <div style={{marginLeft:'28vw',marginTop:'4px'}}>
+              <div style={{marginLeft:'20vw',marginTop:'4px'}}>
               <FaUserAlt style={{color : 'White'}} />
               </div>
 
