@@ -1,5 +1,7 @@
 package com.bookly.services;
 
+import java.time.LocalDate;
+
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
@@ -25,6 +27,7 @@ public class UserServiceImpl implements UserService {
 	public RegisterDTO addUser(RegisterDTO dto) {
 		if(dto.getUserPassword().equals(dto.getConfirmUserPassword())) {
 			User user = modelMapper.map(dto, User.class);
+			user.setCreatedAt(LocalDate.now());
 			User persistentUser = userDao.save(user);
 			System.out.println("User Id for User " + user.getEmail() + "is "+ persistentUser.getUserId() );
 			return modelMapper.map(persistentUser, RegisterDTO.class);

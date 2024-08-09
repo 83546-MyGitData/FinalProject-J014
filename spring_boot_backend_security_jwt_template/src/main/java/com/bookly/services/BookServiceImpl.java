@@ -1,5 +1,6 @@
 package com.bookly.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import javax.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import com.bookly.custom_exceptions.ResourceNotFoundException;
 import com.bookly.dao.BookDao;
@@ -32,6 +35,9 @@ public class BookServiceImpl implements BookService {
 	@Autowired 
 	private ModelMapper mapper;
 	
+	@Autowired
+	private ImageHandlingService imageHandlingService;
+	
 	@Override
 	public ApiResponse deleteBookById(Long BookId) {
 		Book book = bookDao.findById(BookId).orElseThrow(()-> new ResourceNotFoundException("Invalid Book Id"));
@@ -39,14 +45,7 @@ public class BookServiceImpl implements BookService {
 		return new ApiResponse("Book Deleted With ID - "+ book.getBookId());
 	}
 
-	@Override
-	public BookDTO addNewBook(Long CategoryId,BookDTO dto) {
-		Category category = categoryDao.findById(CategoryId).orElseThrow(()-> new ResourceNotFoundException("Invalid Category Id"));
-		Book book = mapper.map(dto, Book.class);
-		book.setCategory(category);
-		Book persistentBook = bookDao.save(book);
-		return mapper.map(persistentBook, BookDTO.class);
-	}
+	
 
 	@Override
 	public BookDTO getBookById(Long bookId) {
@@ -83,5 +82,22 @@ public class BookServiceImpl implements BookService {
 		return bookDtoList;
 	}
 	
-	
+	@Override
+	public BookDTO addNewBookWithImage(BookDTO dto, MultipartFile image, Long categoryId) throws IOException {
+
+		
+			Category category = categoryDao.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Invalid Category Id"));
+			
+			Book BookEntity = mapper.map(dto, Book.class);
+			BookEntity.setCategory(category);
+			
+			imageHandlingService.uploadImage(BookEntity, image);
+			
+			Book persistentBook = bookDao.save(BookEntity);
+
+			return mapper.map(persistentBook, BookDTO.class);
+
+		
+	}
+
 }
