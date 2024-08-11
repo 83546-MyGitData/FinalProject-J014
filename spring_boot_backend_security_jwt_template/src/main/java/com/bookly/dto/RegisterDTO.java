@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.bookly.entities.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -36,4 +37,5 @@ public class RegisterDTO {
 	private String contactNo;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthDate;
+	private Role role;
 }
