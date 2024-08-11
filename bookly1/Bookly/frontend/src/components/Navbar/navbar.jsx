@@ -1,7 +1,7 @@
 import { NavLink, Link } from 'react-router-dom';
 import './Navbar.css';  // Import the CSS file
-import Logo from './Logo.jpeg';
 import { FaUserAlt } from "react-icons/fa";
+import logo from './logo.png';
 
 
 
@@ -13,7 +13,7 @@ function Navbar({user , setUser}) {
     <nav className='navbar navbar-expand-lg bg-body-tertiary' data-bs-theme='dark'>
       <div className='container-fluid'>
         <a className="navbar-brand" href="#">
-          <img src={Logo} alt='' width="30" height="24" className='navbar_logo'/>
+          <img src={logo} alt=''className='navbar_logo' style={{width:'50px', height:'50px'}}/>
           ᗷᗝᗝᛕᒪƳ.Ꭵᗝ      </a>
 
         <div className='collapse navbar-collapse' style={{marginTop:'5px'}} id='navbarSupportedContent'>
