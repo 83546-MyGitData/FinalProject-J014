@@ -4,7 +4,7 @@ import { Register } from "./pages/Register/Register";
 import Home from "./pages/Home/Home"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Profile from "./pages/Profile";
+import Profile from "./pages/Profile/Profile";
 //import Categories from './pages/Categories/AllBooks';
 import AllBooks from "./pages/Categories/AllBooks";
 //import BookDetails from './categories/BookDetails';
@@ -16,7 +16,7 @@ import Admin from "./admin/admin";
 import AddNewBook from "./addBooks/addnewbook";
 import React, { useState} from "react";
 import Footer from "./components/Footer/Footer";
-
+import PaymentForm from "./pages/Payment/Paymentform";
 
 
 
@@ -33,31 +33,23 @@ function App() {
     <div className="container-fluid">
       <Provider store={store}>
       <Routes>
-        <Route index element={<Login/>} /> 
-        <Route path='/' element={<Login/>}/>
+        <Route index element={<Home/>} /> 
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/home' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
-
-        <Route path = '/' element={<Home/>} />
         <Route path = '/allBooks' element={<AllBooks/>} />
-
-
-        <Route path="/" element={<Home />} />
         <Route path="/bookDetails" element={<BookDetails />} />
-
         <Route path = '/scienceFiction' element={<AllBooks/>} />
-
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route
             path="/admin"
-            element={<Admin />}
-          />
-
+            element={<Admin />}/>
         <Route
             path="/admin/addnewitem"
             element={<AddNewBook books={books} setBooks={setBooks} />}
           />
+        <Route path="/payment" element={<PaymentForm/>}/>
         
       </Routes>
       <ToastContainer />

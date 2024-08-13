@@ -28,9 +28,9 @@ const Footer = () => {
             </div>
             <div className="col-lg-4 col-md-6 col-sm-6 mb-5 mt-10">
               <h6>Follow Me on</h6>
-              <button><FaLinkedin /></button>
+              <FaLinkedin style={{color:'white'}}/>
               <div></div>
-              <button><FaTwitter /></button>
+              <FaTwitter style={{color:'white'}}/>
             </div>
           </div>
         </div>

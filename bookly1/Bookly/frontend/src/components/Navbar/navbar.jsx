@@ -1,12 +1,32 @@
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';  // Import the CSS file
 import { FaUserAlt } from "react-icons/fa";
 import logo from './logo.png';
+import React, { useState, useEffect } from 'react';
 
 
 
-function Navbar({user , setUser}) {
+const Navbar = () => {
 
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for token in session storage
+    const token = sessionStorage.getItem('jwt');
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    // Clear the token from session storage and update state
+    sessionStorage.removeItem('jwt');
+    setIsAuthenticated(false);
+    console.log('Logged out');
+  };
 
   return (
     
@@ -63,14 +83,18 @@ function Navbar({user , setUser}) {
               </form>
             </li>
 
-            <li className='nav-item'>
-              <div style={{marginLeft:'20vw',marginTop:'4px'}}>
-              <FaUserAlt style={{color : 'White'}} />
-              </div>
-
+            <li className='nav-item' style={{marginLeft:'250px'}}>
+              <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <FaUserAlt/>
+              </a>
+              <ul className="dropdown-menu">
+                <li><a className="dropdown-item" href="/profile">Profile</a></li>
+                <li><a className="dropdown-item" href="/login">Logout</a></li>
+              </ul>
+              </li>
             </li>
 
-            
           </ul>
         </div>
         </div>

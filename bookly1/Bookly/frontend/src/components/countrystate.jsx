@@ -14,7 +14,7 @@ import {
         <div>
             <div className="row">
                 <div className="col">
-                <h6>Country</h6>
+                <h6 style={{fontWeight:'bold'}}>Country</h6>
                 <CountrySelect
                 onChange={(e) => {
                 setCountryid(e.id);
@@ -24,7 +24,7 @@ import {
                 </div>
 
                 <div className="col">
-                <h6>State</h6>
+                <h6 style={{fontWeight:'bold'}}>State</h6>
                 <StateSelect
                 countryid={countryid}
                 onChange={(e) => {
@@ -35,7 +35,7 @@ import {
                 </div>
 
                 <div className="col">
-                <h6>City</h6>
+                <h6 style={{fontWeight:'bold'}}>City</h6>
                 <CitySelect
                 countryid={countryid}
                 stateid={stateid}

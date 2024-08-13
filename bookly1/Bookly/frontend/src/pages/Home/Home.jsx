@@ -3,7 +3,7 @@ import React from 'react';
 import Card from '../../components/Card/card'; // Import the Card component
 import Navbar from '../../components/Navbar/navbar';
 
-const HomePage = () => {
+const Home = () => {
     // Sample data for the cards
     const cardData = [
         {
@@ -64,4 +64,9 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default Home;
+
+
+
+
+
