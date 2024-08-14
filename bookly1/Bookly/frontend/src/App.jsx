@@ -18,6 +18,7 @@ import React, { useState} from "react";
 import Footer from "./components/Footer/Footer";
 import PaymentForm from "./pages/Payment/Paymentform";
 import AboutUsPage from "./pages/AboutUs/AboutUsPage";
+import BookDescriptionPage from "./components/BookDetails/BookDescriptionPage";
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/bookDetails" element={<BookDetails />} />
         <Route path = '/scienceFiction' element={<AllBooks/>} />
         <Route path="/signin" element={<SignIn setUser={setUser} />} />
+        <Route path="/book/:id" element={<BookDescriptionPage />} />
         <Route
             path="/admin"
             element={<Admin />}/>

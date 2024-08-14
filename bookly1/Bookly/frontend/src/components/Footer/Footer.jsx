@@ -1,8 +1,15 @@
 import React from "react";
 import './footer.css'
 import { FaArrowRight,FaLinkedin, FaTwitter  } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+  const onLinkedin=()=>{
+    navigate('www.linkedin.com')
+  }
+
   return (
     <div>
       <footer className="container-fluid ">
@@ -28,9 +35,26 @@ const Footer = () => {
             </div>
             <div className="col-lg-4 col-md-6 col-sm-6 mb-5 mt-10">
               <h6>Follow Me on</h6>
-              <FaLinkedin style={{color:'white'}}/>
-              <div></div>
-              <FaTwitter style={{color:'white'}}/>
+              <br />
+              <a
+              href="https://www.linkedin.com/in/your-profile" // Replace with your LinkedIn profile URL
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer" // Security measure to prevent potential vulnerabilities
+              style={{ textDecoration: 'none', color: 'white' }} // Optional styling
+               >
+              <FaLinkedin size={30} /> {/* Adjust size as needed */}
+            </a>
+              <br />
+              <br />
+            <a
+              href="https://www.twitter.com/in/your-profile" // Replace with your LinkedIn profile URL
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer" // Security measure to prevent potential vulnerabilities
+              style={{ textDecoration: 'none', color: 'white' }} // Optional styling
+               >
+              <FaTwitter size={30} /> {/* Adjust size as needed */}
+            </a>
+              
             </div>
           </div>
         </div>
