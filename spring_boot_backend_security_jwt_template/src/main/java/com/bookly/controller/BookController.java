@@ -47,7 +47,7 @@ public class BookController {
 		return ResponseEntity.ok(bookService.getAllBooksByCategory(categoryId));
 	}
 	
-	@GetMapping
+	@GetMapping("/view")
 	public ResponseEntity<?> getAllBooks(){
 		return ResponseEntity.ok(bookService.getAllBooks());
 	}
