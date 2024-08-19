@@ -14,6 +14,7 @@ import com.bookly.services.DiscountService;
 
 @RestController
 @RequestMapping("/discounts")
+@CrossOrigin(origins = "*")
 public class DiscountController {
 
     @Autowired

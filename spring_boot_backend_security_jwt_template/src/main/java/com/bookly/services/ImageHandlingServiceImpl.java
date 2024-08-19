@@ -65,6 +65,9 @@ public class ImageHandlingServiceImpl implements ImageHandlingService {
 
 	@Override
 	public void uploadImage(Book book, MultipartFile image) throws IOException {
+		if (image.isEmpty()) {
+	        throw new IllegalArgumentException("Uploaded file is empty");
+	    }
 		String path = uploadFolder.concat(image.getOriginalFilename());
 		System.out.println(path);
 		writeByteArrayToFile(new File(path), image.getBytes());
@@ -111,4 +114,5 @@ public class ImageHandlingServiceImpl implements ImageHandlingService {
 	
 	}
 
+	
 }

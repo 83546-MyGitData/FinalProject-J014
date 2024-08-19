@@ -20,14 +20,13 @@ import lombok.Setter;
 public class BookDTO {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long bookId;
-	@NotBlank
+	
 	private String title;
-	@NotBlank
 	private String author;
-	@NotBlank
 	private String description;
-	@NotBlank
 	private double price;
-	@NotBlank
 	private String publication;
+	private int quantity;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String imgPath;
 }

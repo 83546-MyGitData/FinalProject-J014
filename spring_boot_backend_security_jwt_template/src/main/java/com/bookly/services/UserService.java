@@ -5,7 +5,7 @@ import com.bookly.dto.RegisterDTO;
 import com.bookly.dto.SigninRequest;
 
 public interface UserService {
-	RegisterDTO addUser(RegisterDTO dto);
+	ApiResponse addUser(RegisterDTO dto);
 
 	ApiResponse authenticateUser(SigninRequest dto);
 }

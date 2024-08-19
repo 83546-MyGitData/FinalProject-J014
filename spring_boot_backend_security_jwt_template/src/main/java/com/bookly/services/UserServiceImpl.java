@@ -33,16 +33,16 @@ public class UserServiceImpl implements UserService {
 
 	
 	@Override
-	public RegisterDTO addUser(RegisterDTO dto) {
-		if(dto.getUserPassword().equals(dto.getConfirmUserPassword())) {
+	public ApiResponse addUser(RegisterDTO dto) {
+		
 			User user = modelMapper.map(dto, User.class);
-			user.setUserPassword((passwordEncoder.encode(user.getUserPassword()))); // Encode the password before saving
+			user.setPassword((passwordEncoder.encode(dto.getPassword()))); // Encode the password before saving
 			user.setCreatedAt(LocalDate.now());
 			User persistentUser = userDao.save(user);
 			System.out.println("User Id for User " + user.getEmail() + "is "+ persistentUser.getUserId() );
-			return modelMapper.map(persistentUser, RegisterDTO.class);
-		}
-		throw new ApiException("Password Doesn't Match!");
+			return new ApiResponse("Registered Successfully");
+		
+		
 	}
 	
 	@Override
@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userDao.findByEmail(dto.getEmail());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            if (passwordEncoder.matches(dto.getPassword(), user.getUserPassword())) {
-                return new ApiResponse("User Logged In with Id: " + user.getUserId());
+            if (passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+                return new ApiResponse("User Logged In");
             } else {
                 return new ApiResponse("Authentication failed: Invalid Email or Password.");
             }

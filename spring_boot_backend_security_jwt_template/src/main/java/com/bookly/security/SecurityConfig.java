@@ -38,7 +38,7 @@ public class SecurityConfig {
 		.exceptionHandling().authenticationEntryPoint(authEntry).
 		and().
 		authorizeRequests()
-		.antMatchers("/books/view","/users/register","/users/signin",
+		.antMatchers("/books/view","/users/register","/books/**","/images/**","/categories/**","/users/signin",
 				"/v*/api-doc*/**","/swagger-ui/**").permitAll()
 		.antMatchers(HttpMethod.OPTIONS).permitAll()
 		.antMatchers("/books/purchase/**").hasRole("CUSTOMER")

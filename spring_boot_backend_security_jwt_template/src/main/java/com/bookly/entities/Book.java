@@ -30,8 +30,10 @@ public class Book {
 	private String title;
 	@Column(length = 30)
 	private String author;
+	@Column(length = 2000)
 	private String description;
 	private double price;
+	private int quantity;
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
